@@ -1,9 +1,5 @@
-<script lang='ts'>
-    import NodeList from '../components/nodes/node-list.svelte';
+<script lang="ts">
+	import NodeList from '$lib/nodes/node-list.svelte';
 </script>
 
 <NodeList></NodeList>
-
-<style>
-
-</style>
