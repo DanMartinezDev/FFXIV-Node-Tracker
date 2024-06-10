@@ -19,9 +19,6 @@
 
 		background-color: #333;
 
-		min-width: 100vw;
-		min-height: 100vh;
-
 		padding: 0px 0px 0px 0px;
 	}
 </style>
