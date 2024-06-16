@@ -1,61 +1,43 @@
 <script lang="ts">
+	let spacing = 10;
 </script>
 
-<div class="loader">
-	<div class="loaderBar"></div>
+<div class="time-line-container">
+	{#each { length: 60 } as _, ticks}
+		<div class="time-tick" style="--start: {ticks * spacing}px; --distance: {ticks * spacing - spacing}px; --duration: 1s;">|</div>
+	{/each}
 </div>
 
+<br />
+
+<br />
+
 <style>
-	.loader {
-		width: 500px;
-		margin: 0 auto;
-		border-radius: 10px;
-		border: 4px solid transparent;
-		position: relative;
-		padding: 1px;
-	}
-	.loader:before {
-		content: '';
-		border: 1px solid #fff;
-		border-radius: 10px;
-		position: absolute;
-		top: -4px;
-		right: -4px;
-		bottom: -4px;
-		left: -4px;
-	}
-	.loader .loaderBar {
-		position: absolute;
-		border-radius: 10px;
-		top: 0;
-		right: 100%;
-		bottom: 0;
-		left: 0;
-		background: #fff;
-		width: 0;
-		animation: borealisBar 60s linear infinite;
+	.time-line-container {
+		border: thin solid #fff;
+		padding-bottom: 23px;
 	}
 
-	@keyframes borealisBar {
+	.time-tick {
+		margin-right: 0;
+		padding: 0px;
+		animation-name: time-tick-keyframe;
+		position: absolute;
+		animation-duration: var(--duration);
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+		animation-direction: normal;
+		animation-play-state: running;
+		animation-fill-mode: backwards;
+		color: #fff;
+	}
+
+	@keyframes time-tick-keyframe {
 		0% {
-			left: 0%;
-			right: 100%;
-			width: 0%;
-		}
-		10% {
-			left: 0%;
-			right: 75%;
-			width: 25%;
-		}
-		90% {
-			right: 0%;
-			left: 75%;
-			width: 25%;
+			left: var(--start);
 		}
 		100% {
-			left: 100%;
-			right: 0%;
-			width: 0%;
+			left: var(--distance);
 		}
 	}
 </style>
